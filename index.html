@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Blue Prestige - Premium Services Catalog</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2d4a 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f2847 0%, #1a3a5c 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .logo-accent {
+            color: #d4af37;
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            font-weight: 300;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
+        }
+
+        .intro {
+            padding: 60px 40px;
+            background: linear-gradient(to bottom, #f8f9fa 0%, white 100%);
+            text-align: center;
+        }
+
+        .intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            color: #0f2847;
+            margin-bottom: 25px;
+        }
+
+        .intro p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 40px auto 0;
+            padding: 0 20px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #f0f0f0;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(15,40,71,0.15);
+            border-color: #d4af37;
+        }
+
+        .benefit-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card h3 {
+            color: #0f2847;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .benefit-card p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .services-section {
+            padding: 40px;
+        }
+
+        .category {
+            margin-bottom: 60px;
+            background: linear-gradient(to right, #f8f9fa 0%, white 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+            border-left: 5px solid #d4af37;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .category-icon {
+            font-size: 3em;
+            margin-right: 20px;
+            color: #0f2847;
+        }
+
+        .category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #0f2847;
+            font-weight: 600;
+        }
+
+        .category-description {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 3px solid #d4af37;
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .service-item {
+            background: white;
+            padding: 18px 22px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(15,40,71,0.1);
+            border-color: #d4af37;
+            background: linear-gradient(to right, white 0%, #f8f9fa 100%);
+        }
+
+        .service-bullet {
+            color: #d4af37;
+            margin-right: 12px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .premium-section {
+            background: linear-gradient(135deg, #0f2847 0%, #1a3a5c 100%);
+            color: white;
+            padding: 60px 40px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .premium-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .premium-highlight {
+            color: #d4af37;
+        }
+
+        .tech-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tech-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .tech-card h3 {
+            color: #d4af37;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .tech-card p {
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+        }
+
+        footer {
+            background: #0a1628;
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .contact-info {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item h4 {
+            color: #d4af37;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .contact-item p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #0a1628;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(212,175,55,0.3);
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212,175,55,0.5);
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            margin: 40px auto;
+            max-width: 300px;
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            display: flex;
+            gap: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .language-toggle {
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        .lang-btn {
+            padding: 10px 20px;
+            border: none;
+            background: transparent;
+            color: #0f2847;
+            cursor: pointer;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .lang-btn:hover {
+            background: rgba(15,40,71,0.1);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #0a1628;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .language-toggle {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-toggle">
+        <button class="lang-btn active" id="lang-en">EN</button>
+        <button class="lang-btn" id="lang-ru">RU</button>
+    </div>
+
+    <script>
+        let currentLang = 'en';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+
+            // Update button states
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-ru').classList.toggle('active', lang === 'ru');
+
+            // Update all elements with data-en and data-ru attributes
+            document.querySelectorAll('[data-en][data-ru]').forEach(element => {
+                element.textContent = element.getAttribute('data-' + lang);
+            });
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Add event listeners after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('lang-en').addEventListener('click', function() {
+                switchLanguage('en');
+            });
+
+            document.getElementById('lang-ru').addEventListener('click', function() {
+                switchLanguage('ru');
+            });
+
+            // Set initial language
+            switchLanguage('en');
+        });
+    </script>
+
+    <div class="container">
+        <header>
+            <div class="logo">Deep <span class="logo-accent">Blue</span> Prestige</div>
+            <div class="tagline" data-en="Premium Cleaning and Comprehensive Home & Business Care" data-ru="Премиальный клининг и комплексный уход за домом и бизнесом">Premium Cleaning and Comprehensive Home & Business Care</div>
+        </header>
+
+        <section class="intro">
+            <h2 data-en="The Art of Impeccable Cleanliness" data-ru="Искусство безупречной чистоты">The Art of Impeccable Cleanliness</h2>
+            <p data-en="Deep Blue Prestige combines European quality standards, innovative technologies, and an individual approach. We create the perfect space for living and working, using professional equipment and premium eco-friendly products." data-ru="Deep Blue Prestige — это сочетание европейских стандартов качества, инновационных технологий и индивидуального подхода. Мы создаем идеальное пространство для жизни и работы, используя профессиональное оборудование и экологичные средства премиум-класса.">Deep Blue Prestige combines European quality standards, innovative technologies, and an individual approach. We create the perfect space for living and working, using professional equipment and premium eco-friendly products.</p>
+
+            <div class="benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏆</div>
+                    <h3 data-en="Premium Quality" data-ru="Премиальное качество">Premium Quality</h3>
+                    <p data-en="European standards and certified specialists" data-ru="Европейские стандарты и сертифицированные специалисты">European standards and certified specialists</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔬</div>
+                    <h3 data-en="Innovation" data-ru="Инновации">Innovation</h3>
+                    <p data-en="Modern equipment and quality control technologies" data-ru="Современное оборудование и технологии контроля">Modern equipment and quality control technologies</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌿</div>
+                    <h3 data-en="Eco-Friendly" data-ru="Экологичность">Eco-Friendly</h3>
+                    <p data-en="Safe products for health and environment" data-ru="Безопасные средства для здоровья и окружающей среды">Safe products for health and environment</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">✨</div>
+                    <h3 data-en="Guarantee" data-ru="Гарантия">Guarantee</h3>
+                    <p data-en="100% satisfaction or re-cleaning" data-ru="100% удовлетворенность результатом или повторная уборка">100% satisfaction or re-cleaning</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-section">
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">🏠</div>
+                    <h2 class="category-title" data-en="Home Care" data-ru="Уход за домом">Home Care</h2>
+                </div>
+                <p class="category-description" data-en="Comprehensive solutions for maintaining perfect order in your home. From regular cleaning to deep cleaning after renovation." data-ru="Комплексные решения для поддержания идеального порядка в вашем доме. От регулярной уборки до генеральной чистоты после ремонта.">Comprehensive solutions for maintaining perfect order in your home. From regular cleaning to deep cleaning after renovation.</p>
+                <div class="services-grid">
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Deep Cleaning" data-ru="Генеральная уборка">Deep Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Maintenance Cleaning" data-ru="Поддерживающая уборка">Maintenance Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Post-Renovation Cleaning" data-ru="Уборка после ремонта">Post-Renovation Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Move In/Out Cleaning" data-ru="Уборка до/после переезда">Move In/Out Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Closet Cleaning" data-ru="Уборка в шкафах">Closet Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Window & Frame Washing" data-ru="Мытьё окон и рам">Window & Frame Washing</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Floor & Tile Cleaning" data-ru="Чистка полов и кафеля">Floor & Tile Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Wooden Floor Polishing" data-ru="Полировка деревянных полов">Wooden Floor Polishing</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Oven & Hood Cleaning" data-ru="Чистка духовки и вытяжки">Oven & Hood Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Appliance Cleaning" data-ru="Чистка бытовой техники">Appliance Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Fireplace Cleaning" data-ru="Уборка камина">Fireplace Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Laundry Ironing" data-ru="Глажка белья">Laundry Ironing</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Carpet Washing" data-ru="Стирка ковровых покрытий">Carpet Washing</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Pilling Removal" data-ru="Удаление катышков">Pilling Removal</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Plant Care" data-ru="Уход за растениями">Plant Care</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Extreme Cleaning" data-ru="Экстремальная уборка">Extreme Cleaning</span></div>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">🔬</div>
+                    <h2 class="category-title" data-en="Specialized Cleaning" data-ru="Специализированный клининг">Specialized Cleaning</h2>
+                </div>
+                <p class="category-description" data-en="Professional solutions for deep cleaning and creating a healthy atmosphere using advanced technologies." data-ru="Профессиональные решения для глубокой очистки и создания здоровой атмосферы с использованием передовых технологий.">Professional solutions for deep cleaning and creating a healthy atmosphere using advanced technologies.</p>
+                <div class="services-grid">
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Mattress Dust Mite Removal" data-ru="Чистка матрасов от пылевых клещей">Mattress Dust Mite Removal</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Ozone Treatment" data-ru="Озонация помещений">Ozone Treatment</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Professional Disinfection" data-ru="Профессиональная дезинфекция">Professional Disinfection</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Office Disinfection" data-ru="Дезинфекция офисов">Office Disinfection</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Mold Removal" data-ru="Удаление плесени">Mold Removal</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Odor Elimination" data-ru="Устранение запахов">Odor Elimination</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Drying After Flooding" data-ru="Сушка после затопления">Drying After Flooding</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Dry Fog Cleaning" data-ru="Чистка сухим туманом">Dry Fog Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Plastic Restoration" data-ru="Восстановление пластика">Plastic Restoration</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Headlight Restoration" data-ru="Восстановление фар">Headlight Restoration</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Floor Wax Polishing" data-ru="Полировка полов воском">Floor Wax Polishing</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Jewelry Cleaning" data-ru="Чистка ювелирных изделий">Jewelry Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Ultrasonic Curtain Cleaning" data-ru="Чистка штор ультразвуком">Ultrasonic Curtain Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Air Quality Monitoring" data-ru="Мониторинг качества воздуха">Air Quality Monitoring</span></div>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">🚗</div>
+                    <h2 class="category-title" data-en="Car Detailing" data-ru="Автомобильный детейлинг">Car Detailing</h2>
+                </div>
+                <p class="category-description" data-en="Comprehensive car care: from interior dry cleaning to exterior restoration." data-ru="Комплексный уход за автомобилем: от химчистки салона до восстановления внешнего вида.">Comprehensive car care: from interior dry cleaning to exterior restoration.</p>
+                <div class="services-grid">
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Car Deep Cleaning" data-ru="Генеральная уборка автомобиля">Car Deep Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Interior Dry Cleaning" data-ru="Химчистка салона">Interior Dry Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Interior Odor Removal" data-ru="Удаление запахов из салона">Interior Odor Removal</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Headlight Clarity Restoration" data-ru="Восстановление прозрачности фар">Headlight Clarity Restoration</span></div>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">🏢</div>
+                    <h2 class="category-title" data-en="Commercial Cleaning" data-ru="Коммерческая уборка">Commercial Cleaning</h2>
+                </div>
+                <p class="category-description" data-en="Professional business space maintenance with flexible scheduling and custom solutions." data-ru="Профессиональное обслуживание бизнес-пространств с гибким графиком и индивидуальными решениями.">Professional business space maintenance with flexible scheduling and custom solutions.</p>
+                <div class="services-grid">
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Office Cleaning" data-ru="Уборка офисов">Office Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Cafe & Restaurant Cleaning" data-ru="Уборка кафе и ресторанов">Cafe & Restaurant Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Gym Cleaning" data-ru="Уборка спортивных залов">Gym Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Hotel Cleaning" data-ru="Уборка гостиниц">Hotel Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Office Area Disinfection" data-ru="Дезинфекция офисных зон">Office Area Disinfection</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Commercial Space Cleaning" data-ru="Уборка коммерческих помещений">Commercial Space Cleaning</span></div>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">🌳</div>
+                    <h2 class="category-title" data-en="Outdoor Services" data-ru="Наружные работы">Outdoor Services</h2>
+                </div>
+                <p class="category-description" data-en="Property and exterior surface care." data-ru="Уход за придомовой территорией и наружными поверхностями.">Property and exterior surface care.</p>
+                <div class="services-grid">
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Solar Panel Washing" data-ru="Мытьё солнечных панелей">Solar Panel Washing</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Facade & Fence Washing" data-ru="Мытьё фасадов и заборов">Facade & Fence Washing</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Terrace Cleaning" data-ru="Очистка террас">Terrace Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Garden & Property Care" data-ru="Уборка сада и территории">Garden & Property Care</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Yacht Cleaning" data-ru="Уборка яхты">Yacht Cleaning</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Trash Bin Washing" data-ru="Мойка мусорных баков">Trash Bin Washing</span></div>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">🛠️</div>
+                    <h2 class="category-title" data-en="Household Services" data-ru="Бытовые услуги">Household Services</h2>
+                </div>
+                <p class="category-description" data-en="Help with daily tasks and minor repairs." data-ru="Помощь в повседневных задачах и мелкий ремонт.">Help with daily tasks and minor repairs.</p>
+                <div class="services-grid">
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Drain Unclogging" data-ru="Прочистка засоров">Drain Unclogging</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Minor Home Repairs" data-ru="Мелкий ремонт по дому">Minor Home Repairs</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Knife Sharpening" data-ru="Заточка ножей">Knife Sharpening</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Packing & Unpacking" data-ru="Упаковка и распаковка вещей">Packing & Unpacking</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Loading & Unloading" data-ru="Погрузка и разгрузка">Loading & Unloading</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Full Moving Support" data-ru="Полное сопровождение переезда">Full Moving Support</span></div>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">👨‍👩‍👧</div>
+                    <h2 class="category-title" data-en="Family Care" data-ru="Забота о семье">Family Care</h2>
+                </div>
+                <p class="category-description" data-en="Personal services for your family's comfort." data-ru="Персональные услуги для комфорта вашей семьи.">Personal services for your family's comfort.</p>
+                <div class="services-grid">
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Childcare" data-ru="Присмотр за детьми">Childcare</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Elderly Care" data-ru="Присмотр за пожилыми">Elderly Care</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Dog Walking" data-ru="Выгул собак">Dog Walking</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Pet Feeding" data-ru="Кормление домашних животных">Pet Feeding</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Grocery Shopping" data-ru="Закупка продуктов">Grocery Shopping</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Personal Errands" data-ru="Выполнение личных поручений">Personal Errands</span></div>
+                    <div class="service-item"><span class="service-bullet">◆</span><span data-en="Full Household Support Package" data-ru="Полный пакет бытовой помощи">Full Household Support Package</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="premium-section">
+            <h2><span data-en="Technological" data-ru="Технологический">Technological</span> <span class="premium-highlight" data-en="Quality Control" data-ru="контроль качества">Quality Control</span></h2>
+            <div class="tech-services">
+                <div class="tech-card">
+                    <h3>🔍 <span data-en="Inspection Diagnostics" data-ru="Инспекционная диагностика">Inspection Diagnostics</span></h3>
+                    <p data-en="Surface inspection with professional flashlights and mobile microscope to detect invisible contamination" data-ru="Осмотр поверхностей профессиональными фонарями и мобильным микроскопом для выявления невидимых загрязнений">Surface inspection with professional flashlights and mobile microscope to detect invisible contamination</p>
+                </div>
+                <div class="tech-card">
+                    <h3>🧪 <span data-en="Chemical Control" data-ru="Химический контроль">Chemical Control</span></h3>
+                    <p data-en="Testing for chemical residues with testers to ensure your health safety" data-ru="Проверка тестерами на остатки химических средств для безопасности вашего здоровья">Testing for chemical residues with testers to ensure your health safety</p>
+                </div>
+                <div class="tech-card">
+                    <h3>🌡️ <span data-en="Thermal Imaging Diagnostics" data-ru="Тепловизионная диагностика">Thermal Imaging Diagnostics</span></h3>
+                    <p data-en="Thermal camera diagnostics to identify problem areas, leaks, and hidden defects" data-ru="Диагностика тепловой камерой для выявления проблемных зон, утечек и скрытых дефектов">Thermal camera diagnostics to identify problem areas, leaks, and hidden defects</p>
+                </div>
+                <div class="tech-card">
+                    <h3>📸 <span data-en="Photo & Video Reports" data-ru="Фото и видео отчётность">Photo & Video Reports</span></h3>
+                    <p data-en="Complete documentation of work performed before and after for your peace of mind" data-ru="Полная документация выполненных работ до и после для вашего спокойствия">Complete documentation of work performed before and after for your peace of mind</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="divider"></div>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2em; margin-bottom: 30px;" data-en="Contact Us" data-ru="Свяжитесь с нами">Contact Us</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4><span data-en="📞 Phone" data-ru="📞 Телефон">📞 Phone</span></h4>
+                    <p>+31629152035</p>
+                </div>
+                <div class="contact-item">
+                    <h4>📧 Telegram</h4>
+                    <a style="color: rgba(255, 255, 255, 0.8);" href="https://t.me/QPSVMax" target="_blank" rel="noopener">@QPSVMax</a>
+                </div>
+            </div>
+            <a href="https://cleaning-form-neon.vercel.app/" class="cta-button" data-en="Request Consultation" data-ru="Заказать консультацию">Request Consultation</a>
+            <div class="divider" style="margin-top: 40px;"></div>
+            <p style="margin-top: 30px; opacity: 0.7; font-size: 0.9em;" data-en="© 2025 Deep Blue Prestige. All rights reserved." data-ru="© 2025 Deep Blue Prestige. Все права защищены.">© 2025 Deep Blue Prestige. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
